@@ -5,6 +5,8 @@ import DictionaryRenderer from "@arcgis/core/renderers/DictionaryRenderer";
 import MapView from "@arcgis/core/views/MapView";
 import esriConfig from '@arcgis/core/config.js';
 
+import Home from "@arcgis/core/widgets/Home";
+
 import "./App.css";
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
       const map = new ArcGISMap({
         basemap: "gray-vector",
       });
+
+      const home = new Home();
 
       const view = new MapView({
         map,
@@ -124,6 +128,7 @@ function App() {
         maxScale: 0,
       });
 
+      view.ui.add( home, 'top-left');
       map.addMany([layer1, layer2]);
     }
   }, []);
